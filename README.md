@@ -21,9 +21,9 @@ This project aims to securely manage, streamline, and analyze structured and sem
 7. **AWS Athena:** Athena is an interactive query service for S3 in which there is no need to load data it stays in S3.
 
 ## Project Execution Flow
-- **Step 1(Raw Data Bucket):**
+- **Step 1(Raw JSON to Cleansed Parquet Data Bucket):**
 Extract JSON Raw Data: Use AWS CLI to copy Kaggle dataset downloaded on my local machine to AWS S3 bucket -> Cloudwatch Trigger (S3 object event) -> Run Transform Function to convert all JSON files to Parquet Format -> Transform Data And Load it -> Query Using Athena
-- **Step 2(Cleansed Data Bucket):**
+- **Step 2(Raw CSV to Cleansed Parquet Data Bucket):**
 Extract Regionwise CSV Raw Data: Use AWS CLI to copy Kaggle dataset downloaded on my local machine to AWS S3 bucket -> Create ETL(Extract, Transform,Load) job using AWS Glue Studio Script Editor -> Run PySpark code written for ETL job -> Transform Data from CSV to Parquet format And Load it -> Query Using Athena
 - **Step 3(Analytics/Reporting Bucket):**
 Create ETL(Extract, Transform,Load) job using AWS Glue Studio Visual ETL tool that joins two table-1(cleansed JSON to parquet file) and table-2(cleansed CSV to parquet file)  -> Load the resultant joined table in S3 bucket -> Query Using Athena
