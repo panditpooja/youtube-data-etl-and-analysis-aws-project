@@ -20,10 +20,6 @@ This project aims to securely manage, streamline, and analyze structured and sem
 6. **AWS Lambda:** Lambda is a computing service that allows programmers to run code without creating or managing servers.
 7. **AWS Athena:** Athena is an interactive query service for S3 in which there is no need to load data it stays in S3.
 
-## Dataset Used
-This Kaggle dataset contains statistics (CSV files) on daily popular YouTube videos over the course of many months. There are up to 200 trending videos published every day for many locations. The data for each region is in its own file. The video title, channel title, publication time, tags, views, likes and dislikes, description, and comment count are among the items included in the data. A category_id field, which differs by area, is also included in the JSON file linked to the region.
-[Kaggle Dataset](https://www.kaggle.com/datasets/datasnaek/youtube-new)
-
 ## Architecture Diagram
 ![Architecture Diagram](https://github.com/panditpooja/youtube-data-etl-and-analysis-aws-project/blob/dev/architecture.jpeg)
 
@@ -35,13 +31,13 @@ import os
 import boto3
 ```
 ## Project Execution Flow
-**Step 1(Raw Data Bucket):**
+- **Step 1(Raw Data Bucket):**
 Extract JSON Raw Data: Use AWS CLI to copy Kaggle dataset downloaded on my local machine to AWS S3 bucket -> Cloudwatch Trigger (Every 1 day) -> Run Transform Function to covert all JSON files to Parquet Format -> Transform Data And Load it -> Query Using Athena
-**Step 2(Cleansed Data Bucket):**
+- **Step 2(Cleansed Data Bucket):**
 Extract Regionwise CSV Raw Data: Use AWS CLI to copy Kaggle dataset downloaded on my local machine to AWS S3 bucket -> Create ETL(Extract, Transform,Load) job using AWS Glue Studio Script Editor -> Run PySpark code written for ETL job -> Transform Data from CSV to Parquet format And Load it -> Query Using Athena
-**Step 3(Analytics/Reporting Bucket):**
+- **Step 3(Analytics/Reporting Bucket):**
 Create ETL(Extract, Transform,Load) job using AWS Glue Studio Visual ETL tool that joins two table-1(cleansed JSON to parquet file) and table-2(cleansed CSV to parquet file)  -> Load the resultant joined table in S3 bucket -> Query Using Athena
-**Step 4(Quicksight Analysis):**
+- **Step 4(Quicksight Analysis):**
 Validtae and establish Quicksight and Athena Connections -> Import Final Analystics Dataset from Athena to Quicksight -> Generate Dashboards to answer Business questions for better insights.
 
 ## Achievements
@@ -49,5 +45,7 @@ Validtae and establish Quicksight and Athena Connections -> Import Final Analyst
 - Streamlined Data Processing by 31.6% with Automated Data Ingestion from source to analytics-ready format using AWS CLI, CloudWatch, Lambda, S3, and Athena to create an efficient ETL pipeline, enhancing scalability and efficiency.
 - Created insightful dashboards with Amazon QuickSight, facilitating trend analysis and improving decision-making, resulting in faster insights.
 
-
+## Dataset Used
+This Kaggle dataset contains statistics (CSV files) on daily popular YouTube videos over the course of many months. There are up to 200 trending videos published every day for many locations. The data for each region is in its own file. The video title, channel title, publication time, tags, views, likes and dislikes, description, and comment count are among the items included in the data. A category_id field, which differs by area, is also included in the JSON file linked to the region.
+[Kaggle Dataset](https://www.kaggle.com/datasets/datasnaek/youtube-new)
 
