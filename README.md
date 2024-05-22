@@ -31,7 +31,7 @@ Create ETL(Extract, Transform,Load) job using AWS Glue Studio Visual ETL tool th
 Validate and establish Quicksight and Athena Connections -> Import Final Analystics Dataset from Athena to Quicksight -> Generate Dashboards to answer Business questions for better insights.
 
 ## Architecture Diagram
-![Architecture Diagram](https://github.com/panditpooja/youtube-data-etl-and-analysis-aws-project/blob/dev/architecture.jpeg)
+![Architecture Diagram](https://github.com/panditpooja/youtube-data-etl-and-analysis-aws-project/blob/dev/architecture.JPG)
 
 ## Install Packages
 ```
